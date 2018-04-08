@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <span></span>
+
+  <script type="module">
+    import { MatchMediaBreakpoint, getCurrentBreakpoint } from '../src/main.js'; 
+
+    const span = document.querySelector('span');
+    
+    const breakpoints = [
+      { breakpoint: 'mobile', width: 300 },
+      { breakpoint: 'tablet', width: 600 },
+      { breakpoint: 'laptop', width: 900 },
+      { breakpoint: 'desktop', width: 1200 },
+    ];
+
+    span.innerHTML = `Current breakpoint: ${getCurrentBreakpoint(breakpoints)}`;
+
+    const matchMedia = new MatchMediaBreakpoint({
+      breakpoints, 
+      onBreakpointChange: (breakpoint) => {
+        span.innerHTML = `Current breakpoint: ${breakpoint}`;
+      },
+    });
+    
+  </script>
+</body>
+</html>

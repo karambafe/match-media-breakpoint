@@ -1,0 +1,52 @@
+{
+  "name": "match-media-breakpoint",
+  "version": "1.0.0",
+  "description": "Match Media Breakpoint",
+  "main": "dist/match-media-breakpoint.cjs.js",
+  "browser": "dist/match-media-breakpoint.umd.js",
+  "module": "dist/match-media-breakpoint.esm.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "babel": {
+    "env": {
+      "test": {
+        "presets": [
+          "env"
+        ]
+      },
+      "development": {
+        "presets": [
+          [
+            "env",
+            {
+              "modules": false
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/main.js"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "testRegex": "tests/.*\\.test\\.js$"
+  },
+  "devDependencies": {
+    "babel-preset-env": "1.6.1",
+    "jest-cli": "22.4.3",
+    "rollup": "0.57.1",
+    "rollup-plugin-babel": "3.0.3"
+  }
+}
