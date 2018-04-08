@@ -8,12 +8,15 @@
   "files": [
     "dist"
   ],
+  "homepage": "https://github.com/karambafe/match-media-breakpoint",
+  "bugs": "https://github.com/karambafe/match-media-breakpoint/issues",
+  "repository": "git@github.com:karambafe/match-media-breakpoint.git",
+  "author": "Vitaly Blokhin <karambafe@yahoo.com>",
+  "license": "MIT",
   "scripts": {
     "build": "rollup -c",
     "test": "jest"
   },
-  "author": "",
-  "license": "ISC",
   "babel": {
     "env": {
       "test": {
