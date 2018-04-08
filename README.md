@@ -26,7 +26,23 @@ const breakpoints = [
 const matchMediaBreakpoint = new MatchMediaBreakpoint({
   breakpoints, 
   onBreakpointChange: (breakpoint) => {
-    span.innerHTML = `Current breakpoint: ${breakpoint}`;
+    console.log(breakpoint);
   },
 });
 ```
+
+value
+
+```javascript
+matchMediaBreakpoint.value // return current breakpoint
+```
+
+destroy()
+
+```javascript
+matchMediaBreakpoint.destroy() // remove all listeners
+```
+
+## License
+
+This project is licensed under the MIT license, Copyright (c) 2018 Vitaly. For more information see [`LICENSE`](https://github.com/karambafe/match-media-breakpoint/blob/master/LICENSE).
