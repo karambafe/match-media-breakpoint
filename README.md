@@ -16,6 +16,8 @@ Define new instance of MatchMediaBreakpoint with providing breakpoints array at 
 The array of breakpoints should consist of objects, the first property of which is the name of the breakpoint, and the second is the value from which the current breakpoint begins. For example:
 
 ```javascript
+import { MatchMediaBreakpoint } from 'match-media-breakpoint';
+
 const breakpoints = [
   { breakpoint: 'mobile', width: 0 },
   { breakpoint: 'tablet', width: 768 },
