@@ -15,10 +15,10 @@
     const span = document.querySelector('span');
     
     const breakpoints = [
-      { breakpoint: 'mobile', width: 300 },
-      { breakpoint: 'tablet', width: 600 },
-      { breakpoint: 'laptop', width: 900 },
-      { breakpoint: 'desktop', width: 1200 },
+      { breakpoint: 'mobile', width: 0 },
+      { breakpoint: 'tablet', width: 768 },
+      { breakpoint: 'laptop', width: 1180 },
+      { breakpoint: 'desktop', width: 1440 },
     ];
 
     span.innerHTML = `Current breakpoint: ${getCurrentBreakpoint(breakpoints)}`;
