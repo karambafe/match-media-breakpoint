@@ -2,6 +2,12 @@
 
 Work with breakpoints through matchMedia.
 
+[![npm](https://img.shields.io/npm/v/match-media-breakpoint.svg)](https://www.npmjs.com/package/match-media-breakpoint)
+[![npm](https://img.shields.io/npm/dm/match-media-breakpoint.svg)](https://www.npmjs.com/package/match-media-breakpoint)
+[![npm](https://img.shields.io/npm/dt/match-media-breakpoint.svg)](https://www.npmjs.com/package/match-media-breakpoint)
+[![David](https://david-dm.org/karambafe/match-media-breakpoint.svg)](https://david-dm.org/karambafe/match-media-breakpoint)
+[![David](https://david-dm.org/karambafe/match-media-breakpoint/dev-status.svg)](https://david-dm.org/karambafe/match-media-breakpoint?type=dev)
+
 ## Demo and examples
 
 [Demo](https://2wj64zzyln.codesandbox.io/)
