@@ -2,6 +2,11 @@
 
 Work with breakpoints through matchMedia.
 
+##Demo and examples
+
+[Demo](https://2wj64zzyln.codesandbox.io/)
+[VueJs simple example](https://codesandbox.io/s/2wj64zzyln)
+
 ## Install
 
 via NPM
