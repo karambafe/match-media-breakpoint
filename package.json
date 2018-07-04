@@ -52,6 +52,7 @@
     "babel-preset-env": "1.6.1",
     "coveralls": "3.0.2",
     "jest-cli": "22.4.3",
+    "match-media-mock": "0.1.0",
     "rollup": "0.57.1",
     "rollup-plugin-babel": "3.0.3"
   }
