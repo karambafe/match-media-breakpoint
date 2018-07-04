@@ -3,6 +3,7 @@
 Work with breakpoints through matchMedia.
 
 [![Build Status](https://travis-ci.org/karambafe/match-media-breakpoint.svg?branch=master)](https://travis-ci.org/karambafe/match-media-breakpoint)
+[![Coverage Status](https://coveralls.io/repos/github/karambafe/match-media-breakpoint/badge.svg?branch=master)](https://coveralls.io/github/karambafe/match-media-breakpoint?branch=master)
 [![npm](https://img.shields.io/npm/v/match-media-breakpoint.svg)](https://www.npmjs.com/package/match-media-breakpoint)
 [![npm](https://img.shields.io/npm/dm/match-media-breakpoint.svg)](https://www.npmjs.com/package/match-media-breakpoint)
 [![npm](https://img.shields.io/npm/dt/match-media-breakpoint.svg)](https://www.npmjs.com/package/match-media-breakpoint)
