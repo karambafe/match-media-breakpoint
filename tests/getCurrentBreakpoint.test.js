@@ -9,12 +9,12 @@ const breakpoints = [
 
 describe('getCurrentBreakpoint', () => {
   it('should return correct brakpoint', () => {
-    global.window.matchMedia = jest.fn(() => ({ matches: true, addListener: jest.fn() }));
+    global.window.matchMedia = () => ({ matches: true, addListener: jest.fn() });
     expect(getCurrentBreakpoint(breakpoints)).toBe('desktop');
   });
 
   it('should return undefined if there was not a single match', () => {
-    global.window.matchMedia = jest.fn(() => ({ matches: false, addListener: jest.fn() }));
+    global.window.matchMedia = () => ({ matches: false, addListener: jest.fn() });
     expect(getCurrentBreakpoint(breakpoints)).toBeUndefined();
   });
 });
