@@ -24,7 +24,7 @@ describe('MatchMediaBreakpoint', () => {
 
   it('should return correct breakpoint if resize window and get value property', () => {
     const matchMediaBreakpoint = new MatchMediaBreakpoint({
-      breakpoints, 
+      breakpoints,
       onBreakpointChange: () => {},
     });
     expect(matchMediaBreakpoint.value).toBe('tablet');
@@ -34,7 +34,7 @@ describe('MatchMediaBreakpoint', () => {
     const spy = jest.fn();
     const mediaQueryList = window.matchMedia('(max-width: 599px)');
     const matchMediaBreakpoint = new MatchMediaBreakpoint({
-      breakpoints, 
+      breakpoints,
       onBreakpointChange: () => {},
     });
     mediaQueryList.addListener = spy;
@@ -46,7 +46,7 @@ describe('MatchMediaBreakpoint', () => {
     const spy = jest.fn();
     const mediaQueryList = window.matchMedia('(max-width: 599px)');
     const matchMediaBreakpoint = new MatchMediaBreakpoint({
-      breakpoints, 
+      breakpoints,
       onBreakpointChange: () => {},
     });
     mediaQueryList.removeListener = spy;
@@ -56,21 +56,21 @@ describe('MatchMediaBreakpoint', () => {
 
   it('should return an array of breakpoints and queries if get breakpoints property', () => {
     const matchMediaBreakpoint = new MatchMediaBreakpoint({
-      breakpoints, 
+      breakpoints,
       onBreakpointChange: () => {},
     });
     expect(matchMediaBreakpoint.breakpoints).toEqual([
-      { breakpoint: 'mobile', query: '(max-width: 599px)' }, 
-      { breakpoint: 'tablet', query: '(max-width: 899px) and (min-width: 600px)' }, 
-      { breakpoint: 'laptop', query: '(max-width: 1199px) and (min-width: 900px)' }, 
-      { breakpoint: 'desktop', query: '(min-width: 1200px)' }
+      { breakpoint: 'mobile', query: '(max-width: 599px)' },
+      { breakpoint: 'tablet', query: '(max-width: 899px) and (min-width: 600px)' },
+      { breakpoint: 'laptop', query: '(max-width: 1199px) and (min-width: 900px)' },
+      { breakpoint: 'desktop', query: '(min-width: 1200px)' },
     ]);
   });
 
   describe('handleMediaQueryList', () => {
     it('should return undefined if not match query', () => {
       const matchMediaBreakpoint = new MatchMediaBreakpoint({
-        breakpoints, 
+        breakpoints,
         onBreakpointChange: () => {},
       });
       expect(matchMediaBreakpoint.handleMediaQueryList({ matches: false })).toBeUndefined();
@@ -78,7 +78,7 @@ describe('MatchMediaBreakpoint', () => {
 
     it('should change value property if event matches is true', () => {
       const matchMediaBreakpoint = new MatchMediaBreakpoint({
-        breakpoints, 
+        breakpoints,
         onBreakpointChange: () => {},
       });
       matchMediaBreakpoint.handleMediaQueryList({ matches: true, media: '(min-width: 1200px)' });
@@ -88,7 +88,7 @@ describe('MatchMediaBreakpoint', () => {
     it('should call callback onBreakpointChange if event matches is true', () => {
       const spy = jest.fn();
       const matchMediaBreakpoint = new MatchMediaBreakpoint({
-        breakpoints, 
+        breakpoints,
         onBreakpointChange: spy,
       });
       matchMediaBreakpoint.handleMediaQueryList({ matches: true, media: '(min-width: 1200px)' });
@@ -100,7 +100,7 @@ describe('MatchMediaBreakpoint', () => {
     it('should call method removeListeners', () => {
       const spy = jest.fn();
       const matchMediaBreakpoint = new MatchMediaBreakpoint({
-        breakpoints, 
+        breakpoints,
         onBreakpointChange: () => {},
       });
       matchMediaBreakpoint.removeListeners = spy;

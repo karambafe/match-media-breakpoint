@@ -14,10 +14,15 @@
   "author": "Vitaly Blokhin <karambafe@yahoo.com>",
   "license": "MIT",
   "scripts": {
+    "precommit": "lint-staged",
     "build": "rollup -c",
+    "lint": "eslint --ignore-path .gitignore .",
     "test": "jest --coverage",
     "test:watch": "jest --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
+  },
+  "lint-staged": {
+    "*.js": "npm run lint -- "
   },
   "babel": {
     "env": {
@@ -38,6 +43,18 @@
       }
     }
   },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "airbnb-base",
+    "env": {
+      "browser": true,
+      "jest": true,
+      "es6": true
+    },
+    "settings": {
+      "import/resolver": "webpack"
+    }
+  },
   "jest": {
     "collectCoverageFrom": [
       "src/main.js"
@@ -49,9 +66,15 @@
     "testRegex": "tests/.*\\.test\\.js$"
   },
   "devDependencies": {
+    "babel-eslint": "8.2.6",
     "babel-preset-env": "1.6.1",
     "coveralls": "3.0.2",
+    "eslint": "5.1.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-import-resolver-webpack": "^0.10.1",
+    "eslint-plugin-import": "2.13.0",
     "jest-cli": "22.4.3",
+    "lint-staged": "^7.2.0",
     "match-media-mock": "0.1.0",
     "rollup": "0.57.1",
     "rollup-plugin-babel": "3.0.3"
