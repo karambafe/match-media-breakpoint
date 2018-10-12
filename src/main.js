@@ -17,6 +17,7 @@ export function MatchMediaBreakpoint({ breakpoints, onBreakpointChange }) {
   this.breakpoints = getMediaQueries(breakpoints);
   this.value = getCurrentBreakpoint(breakpoints);
   this.previousValue = undefined;
+  this._listeners = [];
 
   this._addListeners = () => {
     this.breakpoints
@@ -31,6 +32,8 @@ export function MatchMediaBreakpoint({ breakpoints, onBreakpointChange }) {
         this.previousValue = this.value;
         this.value = item.breakpoint;
         onBreakpointChange(item.breakpoint, this.previousValue);
+
+        this._listeners.forEach(listener => listener(item.breakpoint, this.previousValue));
       }
     });
   };
@@ -40,6 +43,10 @@ export function MatchMediaBreakpoint({ breakpoints, onBreakpointChange }) {
       .map(item => window.matchMedia(item.query))
       .forEach(item => item.removeListener(this._handleMediaQueryList));
   };
+
+  this.subscribe = listener => this._listeners.push(listener);
+
+  this.unsubscribe = listener => this._listeners.filter(l => l !== listener);
 
   this.destroy = () => {
     this._removeListeners();
