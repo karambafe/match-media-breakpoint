@@ -12,9 +12,9 @@ Work with breakpoints through matchMedia.
 
 ## Demo and examples
 
-[Demo](https://2wj64zzyln.codesandbox.io/)
+[Demo](https://wy8p85y2vl.codesandbox.io/)
 
-[VueJs simple example](https://codesandbox.io/s/2wj64zzyln)
+[VueJs simple example](https://codesandbox.io/s/wy8p85y2vl)
 
 ## Install
 
