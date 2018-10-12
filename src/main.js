@@ -54,6 +54,7 @@ export function MatchMediaBreakpoint({ breakpoints, onBreakpointChange }) {
   };
 
   this.destroy = () => {
+    this._listeners = [];
     this._removeListeners();
   };
 

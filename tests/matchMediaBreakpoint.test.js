@@ -186,5 +186,19 @@ describe('MatchMediaBreakpoint', () => {
 
       expect(spy).toBeCalled();
     });
+
+    it('should clear listeners', () => {
+      const matchMediaBreakpoint = new MatchMediaBreakpoint({
+        breakpoints,
+        onBreakpointChange: () => {},
+      });
+
+      const someFunction = () => {};
+  
+      matchMediaBreakpoint.subscribe(someFunction);
+      matchMediaBreakpoint.destroy();
+
+      expect(matchMediaBreakpoint._listeners).toEqual([]);
+    });
   });
 });
