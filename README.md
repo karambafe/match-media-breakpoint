@@ -47,6 +47,8 @@ const matchMediaBreakpoint = new MatchMediaBreakpoint({
 });
 ```
 
+## Properties
+
 value
 
 ```javascript
@@ -57,6 +59,20 @@ previousValue
 
 ```javascript
 matchMediaBreakpoint.previousValue // return previous breakpoint
+```
+
+## Methods
+
+subscribe()
+
+```javascript
+matchMediaBreakpoint.subscribe(handler) // add listener. The hander will be called with the previous and current breakpoint as parameters at each breakpoint change
+```
+
+unsubscribe()
+
+```javascript
+matchMediaBreakpoint.subscribe(handler) // remove listener.
 ```
 
 destroy()
