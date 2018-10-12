@@ -56,7 +56,7 @@ matchMediaBreakpoint.value // return current breakpoint
 previousValue
 
 ```javascript
-matchMediaBreakpoint.previousValue // return current previous breakpoint
+matchMediaBreakpoint.previousValue // return previous breakpoint
 ```
 
 destroy()
