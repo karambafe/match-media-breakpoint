@@ -41,8 +41,8 @@ const breakpoints = [
 
 const matchMediaBreakpoint = new MatchMediaBreakpoint({
   breakpoints, 
-  onBreakpointChange: (breakpoint) => {
-    console.log(breakpoint);
+  onBreakpointChange: (currentBreakpoint, previousBreakpoint) => {
+    console.log({ currentBreakpoint, previousBreakpoint });
   },
 });
 ```
@@ -51,6 +51,12 @@ value
 
 ```javascript
 matchMediaBreakpoint.value // return current breakpoint
+```
+
+previousValue
+
+```javascript
+matchMediaBreakpoint.previousValue // return current previous breakpoint
 ```
 
 destroy()

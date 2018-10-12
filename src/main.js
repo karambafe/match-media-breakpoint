@@ -16,6 +16,7 @@ const getCurrentBreakpoint = breakpoints => (
 export function MatchMediaBreakpoint({ breakpoints, onBreakpointChange }) {
   this.breakpoints = getMediaQueries(breakpoints);
   this.value = getCurrentBreakpoint(breakpoints);
+  this.previousValue = undefined;
 
   this.addListeners = () => {
     this.breakpoints
@@ -27,8 +28,9 @@ export function MatchMediaBreakpoint({ breakpoints, onBreakpointChange }) {
     if (!event.matches) return;
     this.breakpoints.forEach((item) => {
       if (item.query === event.media) {
+        this.previousValue = this.value;
         this.value = item.breakpoint;
-        onBreakpointChange(item.breakpoint);
+        onBreakpointChange(item.breakpoint, this.previousValue);
       }
     });
   };

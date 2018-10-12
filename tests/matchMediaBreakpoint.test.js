@@ -30,6 +30,14 @@ describe('MatchMediaBreakpoint', () => {
     expect(matchMediaBreakpoint.value).toBe('tablet');
   });
 
+  it('should return correct previousBreakpoint after first resize', () => {
+    const matchMediaBreakpoint = new MatchMediaBreakpoint({
+      breakpoints,
+      onBreakpointChange: () => {},
+    });
+    expect(matchMediaBreakpoint.previousBreakpoint).toBe(undefined);
+  });
+
   it('should call addListener if call method addListeners', () => {
     const spy = jest.fn();
     const mediaQueryList = window.matchMedia('(max-width: 599px)');
@@ -92,7 +100,7 @@ describe('MatchMediaBreakpoint', () => {
         onBreakpointChange: spy,
       });
       matchMediaBreakpoint.handleMediaQueryList({ matches: true, media: '(min-width: 1200px)' });
-      expect(spy).toBeCalledWith('desktop');
+      expect(spy).toBeCalledWith('desktop', 'tablet');
     });
   });
 
