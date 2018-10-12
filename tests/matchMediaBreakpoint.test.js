@@ -27,6 +27,7 @@ describe('MatchMediaBreakpoint', () => {
       breakpoints,
       onBreakpointChange: () => {},
     });
+
     expect(matchMediaBreakpoint.value).toBe('tablet');
   });
 
@@ -45,8 +46,10 @@ describe('MatchMediaBreakpoint', () => {
       breakpoints,
       onBreakpointChange: () => {},
     });
+
     mediaQueryList.addListener = spy;
-    matchMediaBreakpoint.addListeners();
+    matchMediaBreakpoint._addListeners();
+
     expect(spy).toBeCalled();
   });
 
@@ -57,8 +60,10 @@ describe('MatchMediaBreakpoint', () => {
       breakpoints,
       onBreakpointChange: () => {},
     });
+
     mediaQueryList.removeListener = spy;
-    matchMediaBreakpoint.removeListeners();
+    matchMediaBreakpoint._removeListeners();
+
     expect(spy).toBeCalled();
   });
 
@@ -67,6 +72,7 @@ describe('MatchMediaBreakpoint', () => {
       breakpoints,
       onBreakpointChange: () => {},
     });
+
     expect(matchMediaBreakpoint.breakpoints).toEqual([
       { breakpoint: 'mobile', query: '(max-width: 599px)' },
       { breakpoint: 'tablet', query: '(max-width: 899px) and (min-width: 600px)' },
@@ -81,7 +87,8 @@ describe('MatchMediaBreakpoint', () => {
         breakpoints,
         onBreakpointChange: () => {},
       });
-      expect(matchMediaBreakpoint.handleMediaQueryList({ matches: false })).toBeUndefined();
+
+      expect(matchMediaBreakpoint._handleMediaQueryList({ matches: false })).toBeUndefined();
     });
 
     it('should change value property if event matches is true', () => {
@@ -89,7 +96,9 @@ describe('MatchMediaBreakpoint', () => {
         breakpoints,
         onBreakpointChange: () => {},
       });
-      matchMediaBreakpoint.handleMediaQueryList({ matches: true, media: '(min-width: 1200px)' });
+
+      matchMediaBreakpoint._handleMediaQueryList({ matches: true, media: '(min-width: 1200px)' });
+
       expect(matchMediaBreakpoint.value).toBe('desktop');
     });
 
@@ -99,7 +108,9 @@ describe('MatchMediaBreakpoint', () => {
         breakpoints,
         onBreakpointChange: spy,
       });
-      matchMediaBreakpoint.handleMediaQueryList({ matches: true, media: '(min-width: 1200px)' });
+
+      matchMediaBreakpoint._handleMediaQueryList({ matches: true, media: '(min-width: 1200px)' });
+
       expect(spy).toBeCalledWith('desktop', 'tablet');
     });
   });
@@ -111,8 +122,10 @@ describe('MatchMediaBreakpoint', () => {
         breakpoints,
         onBreakpointChange: () => {},
       });
-      matchMediaBreakpoint.removeListeners = spy;
+
+      matchMediaBreakpoint._removeListeners = spy;
       matchMediaBreakpoint.destroy();
+
       expect(spy).toBeCalled();
     });
   });

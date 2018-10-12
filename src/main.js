@@ -1,4 +1,4 @@
-const getMediaQueries = breakpoints => (
+export const getMediaQueries = breakpoints => (
   breakpoints.map((item, index) => ({
     breakpoint: item.breakpoint,
     query: index === 0 // eslint-disable-line no-nested-ternary
@@ -8,7 +8,7 @@ const getMediaQueries = breakpoints => (
         : `(max-width: ${breakpoints[index + 1].width - 1}px) and (min-width: ${item.width}px)`,
   })));
 
-const getCurrentBreakpoint = breakpoints => (
+export const getCurrentBreakpoint = breakpoints => (
   getMediaQueries(breakpoints).reduce((previous, current) => (
     window.matchMedia(current.query).matches ? current.breakpoint : previous
   ), undefined));
@@ -18,13 +18,13 @@ export function MatchMediaBreakpoint({ breakpoints, onBreakpointChange }) {
   this.value = getCurrentBreakpoint(breakpoints);
   this.previousValue = undefined;
 
-  this.addListeners = () => {
+  this._addListeners = () => {
     this.breakpoints
       .map(item => window.matchMedia(item.query))
-      .forEach(item => item.addListener(this.handleMediaQueryList));
+      .forEach(item => item.addListener(this._handleMediaQueryList));
   };
 
-  this.handleMediaQueryList = (event) => {
+  this._handleMediaQueryList = (event) => {
     if (!event.matches) return;
     this.breakpoints.forEach((item) => {
       if (item.query === event.media) {
@@ -35,20 +35,15 @@ export function MatchMediaBreakpoint({ breakpoints, onBreakpointChange }) {
     });
   };
 
-  this.removeListeners = () => {
+  this._removeListeners = () => {
     this.breakpoints
       .map(item => window.matchMedia(item.query))
-      .forEach(item => item.removeListener(this.handleMediaQueryList));
+      .forEach(item => item.removeListener(this._handleMediaQueryList));
   };
 
   this.destroy = () => {
-    this.removeListeners();
+    this._removeListeners();
   };
 
-  this.addListeners();
+  this._addListeners();
 }
-
-export {
-  getMediaQueries,
-  getCurrentBreakpoint,
-};
