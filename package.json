@@ -55,7 +55,8 @@
       "import/resolver": "webpack"
     },
     "rules": {
-      "no-underscore-dangle": "off"
+      "no-underscore-dangle": "off",
+      "no-trailing-spaces": "off"
     }
   },
   "jest": {
