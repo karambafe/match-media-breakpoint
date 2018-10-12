@@ -1,6 +1,6 @@
 {
   "name": "match-media-breakpoint",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Match Media Breakpoint",
   "main": "dist/match-media-breakpoint.cjs.js",
   "browser": "dist/match-media-breakpoint.umd.js",
