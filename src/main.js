@@ -46,7 +46,12 @@ export function MatchMediaBreakpoint({ breakpoints, onBreakpointChange }) {
 
   this.subscribe = listener => this._listeners.push(listener);
 
-  this.unsubscribe = listener => this._listeners.filter(l => l !== listener);
+  this.unsubscribe = (listener) => {
+    const index = this._listeners.indexOf(listener);
+    if (index === -1) return;
+
+    this._listeners.splice(index, 1);
+  };
 
   this.destroy = () => {
     this._removeListeners();
