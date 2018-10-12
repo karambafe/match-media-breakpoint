@@ -81,6 +81,51 @@ describe('MatchMediaBreakpoint', () => {
     ]);
   });
 
+  it('should add function to listeners array if call method subscribe', () => {
+    const matchMediaBreakpoint = new MatchMediaBreakpoint({
+      breakpoints,
+      onBreakpointChange: () => {},
+    });
+
+    const someFunction = () => {};
+    matchMediaBreakpoint.subscribe(someFunction);
+
+    expect(matchMediaBreakpoint._listeners).toEqual([someFunction]);
+  });
+
+  describe('unsubscribe', () => {
+    it('should remove function from listeners if it exists', () => {
+      const matchMediaBreakpoint = new MatchMediaBreakpoint({
+        breakpoints,
+        onBreakpointChange: () => {},
+      });
+  
+      const someFunction = () => {};
+      const anotherFunction = () => {};
+  
+      matchMediaBreakpoint.subscribe(someFunction);
+      matchMediaBreakpoint.subscribe(anotherFunction);
+      matchMediaBreakpoint.unsubscribe(anotherFunction);
+  
+      expect(matchMediaBreakpoint._listeners).toEqual([someFunction]);
+    });
+
+    it('should not update listeners array if function is not exists', () => {
+      const matchMediaBreakpoint = new MatchMediaBreakpoint({
+        breakpoints,
+        onBreakpointChange: () => {},
+      });
+  
+      const someFunction = () => {};
+      const unknownFunction = () => {};
+  
+      matchMediaBreakpoint.subscribe(someFunction);
+      matchMediaBreakpoint.unsubscribe(unknownFunction);
+  
+      expect(matchMediaBreakpoint._listeners).toEqual([someFunction]);
+    });
+  });
+
   describe('handleMediaQueryList', () => {
     it('should return undefined if not match query', () => {
       const matchMediaBreakpoint = new MatchMediaBreakpoint({
@@ -113,6 +158,19 @@ describe('MatchMediaBreakpoint', () => {
 
       expect(spy).toBeCalledWith('desktop', 'tablet');
     });
+
+    it('should call listeners if event matches is true', () => {
+      const someFunction = jest.fn();
+      const matchMediaBreakpoint = new MatchMediaBreakpoint({
+        breakpoints,
+        onBreakpointChange: () => {},
+      });
+
+      matchMediaBreakpoint.subscribe(someFunction);
+      matchMediaBreakpoint._handleMediaQueryList({ matches: true, media: '(min-width: 1200px)' });
+
+      expect(someFunction).toBeCalledWith('desktop', 'tablet');
+    });
   });
 
   describe('destroy', () => {
@@ -127,6 +185,20 @@ describe('MatchMediaBreakpoint', () => {
       matchMediaBreakpoint.destroy();
 
       expect(spy).toBeCalled();
+    });
+
+    it('should clear listeners', () => {
+      const matchMediaBreakpoint = new MatchMediaBreakpoint({
+        breakpoints,
+        onBreakpointChange: () => {},
+      });
+
+      const someFunction = () => {};
+  
+      matchMediaBreakpoint.subscribe(someFunction);
+      matchMediaBreakpoint.destroy();
+
+      expect(matchMediaBreakpoint._listeners).toEqual([]);
     });
   });
 });
