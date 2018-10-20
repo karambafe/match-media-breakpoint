@@ -15,11 +15,12 @@
   "license": "MIT",
   "scripts": {
     "precommit": "lint-staged",
-    "build": "rollup -c",
-    "lint": "eslint --ignore-path .gitignore .",
+    "build": "rollup --config rollup.package.config.js",
+    "lint": "eslint --ignore-path .gitignore . --ignore-pattern docs",
     "test": "jest --coverage",
     "test:watch": "jest --watchAll",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "build:demo": "rimraf docs && rollup --config rollup.demo.config.js --format iife"
   },
   "lint-staged": {
     "*.js": "npm run lint -- "
@@ -56,7 +57,9 @@
     },
     "rules": {
       "no-underscore-dangle": "off",
-      "no-trailing-spaces": "off"
+      "no-trailing-spaces": "off",
+      "no-new": "off",
+      "import/no-extraneous-dependencies": "off"
     }
   },
   "jest": {
@@ -80,7 +83,15 @@
     "jest-cli": "22.4.3",
     "lint-staged": "^7.2.0",
     "match-media-mock": "0.1.0",
+    "node-sass": "^4.9.4",
+    "rimraf": "^2.6.2",
     "rollup": "0.57.1",
-    "rollup-plugin-babel": "3.0.3"
+    "rollup-plugin-babel": "3.0.3",
+    "rollup-plugin-fill-html": "^1.1.0",
+    "rollup-plugin-uglify-es": "0.0.1",
+    "rollup-plugin-vue": "^4.3.2",
+    "sass-loader": "^7.1.0",
+    "vue": "^2.5.17",
+    "vue-template-compiler": "^2.5.17"
   }
 }
