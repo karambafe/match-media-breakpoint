@@ -15,7 +15,7 @@
   "license": "MIT",
   "scripts": {
     "precommit": "lint-staged",
-    "build": "rollup -c",
+    "build": "rollup --config rollup.package.config.js",
     "lint": "eslint --ignore-path .gitignore .",
     "test": "jest --coverage",
     "test:watch": "jest --watchAll",
