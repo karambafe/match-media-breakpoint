@@ -12,9 +12,9 @@ Work with breakpoints through matchMedia.
 
 ## Demo and examples
 
-[Demo](https://wy8p85y2vl.codesandbox.io/)
+[Demo](https://karambafe.github.io/match-media-breakpoint/)
 
-[VueJs simple example](https://codesandbox.io/s/wy8p85y2vl)
+[VueJs simple example]((https://github.com/karambafe/match-media-breakpoint/blob/master/docs-src/App.vue))
 
 ## Install
 
