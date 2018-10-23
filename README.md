@@ -83,4 +83,4 @@ matchMediaBreakpoint.destroy() // remove all listeners
 
 ## License
 
-This project is licensed under the MIT license, Copyright (c) 2018 Vitaly. For more information see [`LICENSE`](https://github.com/karambafe/match-media-breakpoint/blob/master/LICENSE).
+This project is licensed under the MIT license, Copyright (c) 2018 karambafe. For more information see [`LICENSE`](https://github.com/karambafe/match-media-breakpoint/blob/master/LICENSE).
